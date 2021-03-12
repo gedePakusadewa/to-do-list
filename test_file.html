@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF-8" />
+	</head>
+	<body>
+		<div>
+			<h1>To Do List</h1>
+			
+				<input type = "text" id = "input-1" name = "item" value = "Name" /><button onclick = "addItem()" >add item</button>
+			
+		</div>
+		<div id = "modal-result">
+				
+		</div>
+
+
+	</body>
+	<script>
+
+		var dataTodo = { 
+			do1:{
+				data:"Do this now", statusDone = false 
+			},
+
+			do2:{
+				data:"DO that tommorow", statusDone = false
+			},
+
+			do3:{
+				data:"Not do that", statusDone = false
+			}
+
+		}; 
+		/*
+		for(var i = 3; i < 5; i++){
+			data["buku" + i] = {judul:"asdasd", halaman:"oi"};			
+		}
+		*/
+		
+		var incre = 4;
+		
+		function addItem(){
+			var dataForm = document.getElementById('input-1').value;
+			//document.getElementById('modal-result').innerHTML = dataForm;
+			dataTodo["do" + incre] = {data:dataForm, statusDone:false};
+			incre++;
+			console.log(dataTodo);
+		}
+
+		
+
+//id, text, status, 
+//	lanjut dgn mempelajari adding value to object javascript
+	</script>
+</html>
