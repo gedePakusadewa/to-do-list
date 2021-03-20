@@ -19,16 +19,16 @@
 	<script>
 
 		var dataTodo = { 
+			do0:{
+				data:"Do this now", statusDone : false 
+			},
+
 			do1:{
-				data:"Do this now", statusDone = false 
+				data:"DO that tommorow", statusDone : false
 			},
 
 			do2:{
-				data:"DO that tommorow", statusDone = false
-			},
-
-			do3:{
-				data:"Not do that", statusDone = false
+				data:"Not do that", statusDone : false
 			}
 
 		}; 
@@ -47,10 +47,27 @@
 			incre++;
 			console.log(dataTodo);
 		}
-
 		
+		function displayData(){
+			var tes = "";
+			
+			for(x in dataTodo){
+				//tes = ("<div>" + (dataTodo["do" + i]["data"]) + "<button>X</button><button>Y</button></div>");
+				//tes = dataTodo[x];
+				//console.log(tes);
+				for(y in dataTodo[x]){
+					tes = dataTodo[x][y];
+					console.log(tes);
+				}
+			}
+			//console.log(tes);
+			//for(var i = 0; i < dataTodo.length; i++){
+			//document.getElementById('modal-result').innerHTML = tes;
+			//}			
+		}
 
-//id, text, status, 
-//	lanjut dgn mempelajari adding value to object javascript
+		displayData();
+		//console.log(dataTodo.length);
+		//lanjut alih cara menampilkan data array dataTodo, suud to celepein ke format innerhtml;
 	</script>
 </html>

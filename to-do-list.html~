@@ -6,10 +6,68 @@
 	<body>
 		<div>
 			<h1>To Do List</h1>
-			<input type = "text" name = "item" value = "Name" /><input type = "submit" value = "Add Item" />
+			
+				<input type = "text" id = "input-1" name = "item" value = "Name" /><button onclick = "addItem()" >add item</button>
+			
 		</div>
-		<div>
+		<div id = "modal-result">
+				
+		</div>
 
-		</div>
+
 	</body>
+	<script>
+
+		var dataTodo = { 
+			do0:{
+				data:"Do this now", statusDone : false 
+			},
+
+			do1:{
+				data:"DO that tommorow", statusDone : false
+			},
+
+			do2:{
+				data:"Not do that", statusDone : false
+			}
+
+		}; 
+		/*
+		for(var i = 3; i < 5; i++){
+			data["buku" + i] = {judul:"asdasd", halaman:"oi"};			
+		}
+		*/
+		
+		var incre = 4;
+		
+		function addItem(){
+			var dataForm = document.getElementById('input-1').value;
+			//document.getElementById('modal-result').innerHTML = dataForm;
+			dataTodo["do" + incre] = {data:dataForm, statusDone:false};
+			incre++;
+			console.log(dataTodo);
+		}
+		
+		function displayData(){
+			var tes = "";
+			
+			for(x in dataTodo){
+				//tes = ("<div>" + (dataTodo["do" + i]["data"]) + "<button>X</button><button>Y</button></div>");
+				//tes = dataTodo[x];
+				//console.log(tes);
+				for(y in dataTodo[x]){
+					tes = dataTodo[x][y];
+					console.log(tes);
+				}
+			}
+			//console.log(tes);
+			//for(var i = 0; i < dataTodo.length; i++){
+			//document.getElementById('modal-result').innerHTML = tes;
+			//}			
+		}
+
+		displayData();
+		//console.log(dataTodo.length);
+		//lanjut alih cara menampilkan data array dataTodo, suud to celepein ke format innerhtml;
+	</script>
 </html>
