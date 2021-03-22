@@ -46,23 +46,29 @@
 			dataTodo["do" + incre] = {data:dataForm, statusDone:false};
 			incre++;
 			console.log(dataTodo);
+			displayData();
 		}
 		
 		function displayData(){
 			var tes = "";
 			
 			for(x in dataTodo){
-				//tes = ("<div>" + (dataTodo["do" + i]["data"]) + "<button>X</button><button>Y</button></div>");
-				//tes = dataTodo[x];
+				tes = tes + ("<div>" + (dataTodo[x]["data"]) + "<button>Del</button><button>Y</button></div>");
+				//tes = dataTodo[x]["data"];
 				//console.log(tes);
+				/*
 				for(y in dataTodo[x]){
-					tes = dataTodo[x][y];
-					console.log(tes);
+					//tes = tes + "<div>" + dataTodo[x][y] + "<button>X</button><button>Y</button></div>";
+					tes = tes + " " + dataTodo[x][y];
+					//console.log(tes);
+					continue;
 				}
+				*/
+				
 			}
 			//console.log(tes);
 			//for(var i = 0; i < dataTodo.length; i++){
-			//document.getElementById('modal-result').innerHTML = tes;
+			document.getElementById('modal-result').innerHTML = tes;
 			//}			
 		}
 
