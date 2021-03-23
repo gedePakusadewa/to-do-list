@@ -20,15 +20,15 @@
 
 		var dataTodo = { 
 			do0:{
-				data:"Do this now", statusDone : false 
+				data:"Do this now", statusDone : false, code : "do0" 
 			},
 
 			do1:{
-				data:"DO that tommorow", statusDone : false
+				data:"DO that tommorow", statusDone : false, code : "do1"
 			},
 
 			do2:{
-				data:"Not do that", statusDone : false
+				data:"Not do that", statusDone : false, code : "do2"
 			}
 
 		}; 
@@ -41,9 +41,9 @@
 		var incre = 4;
 		
 		function addItem(){
-			var dataForm = documen.getElementById('input-1').value;
+			var dataForm = document.getElementById('input-1').value;
 			//document.getElementById('modal-result').innerHTML = dataForm;
-			dataTodo["do" + incre] = {data:dataForm, statusDone:false};
+			dataTodo["do" + incre] = {data:dataForm, statusDone:false, code : "do" + incre};
 			incre++;
 			console.log(dataTodo);
 			displayData();
@@ -53,7 +53,9 @@
 			var tes = "";
 			
 			for(x in dataTodo){
-				tes = tes + ("<div>" + (dataTodo[x]["data"]) + "<button>Del</button><button>Y</button></div>");
+				tes = tes + ("<div>" + (dataTodo[x]["data"]) 
+					+ "<button onclick = 'deleteData(this.name)' name = " 
+					+ dataTodo[x]["code"] + " >Del</button><button>Y</button></div>");
 				//tes = dataTodo[x]["data"];
 				//console.log(tes);
 				/*
@@ -72,11 +74,15 @@
 			//}			
 		}
 		
-		function deleteData(idData = ""){
-		lanjut function delete
-			//delete			
+		function deleteData(idData){
+			//var tmp = idData;
+			console.log((idData));
+			//delete
+			delete dataTodo[idData];
+			displayData();
 		}
-		console.log("------>" + dataTodo["do1"]["data"]);
+		//document.getElemenentById('modal-result').innerHTML = "<h1>";;
+		//console.log("------>" + dataTodo[]);
 		displayData();
 		//console.log(dataTodo.length);
 		//lanjut alih cara menampilkan data array dataTodo, suud to celepein ke format innerhtml;
