@@ -23,7 +23,7 @@
 		}
 
 		.mainContainer{
-			margin:0 20% 0 20%;
+			margin:0 25% 0 25%;
 			border:1px solid black;
 		}
 
@@ -31,8 +31,26 @@
 			border:1px solid black;
 			font-size:15px;
 			height:30px;
-			width:68%;
+			width:80%;
 			padding-left:5px;
+		}
+
+		.buttonInput{
+			width:20%;
+			height:30px;
+		}
+
+		.outputContainer{
+			font-size:15px;
+			height:30px;
+			width:80%;
+			margin:5px 0 0 5px;
+
+		}
+
+		.flex-row{
+			display:flex;
+			flex-direction:row;
 		}
 
 	</style>
@@ -41,10 +59,11 @@
 			<div>
 			<h1 class = "title">To Do List</h1>
 			<div class = "formInput">
-				<input type = "text" class = "inputContainer" id = "input-1" name = "item" value = "Name" /><button onclick = "addItem()" >add item</button>
+				<input type = "text" class = "inputContainer" id = "input-1" 
+					name = "item" value = "Name" /><button class = "buttonInput" onclick = "addItem()" >add item</button>
 			</div>
 			</div>
-			<div id = "modal-result">
+			<div id = "modal-result" class = "">
 				
 			</div>
 		</div>
@@ -82,9 +101,9 @@
 			var tes = "";
 			
 			for(x in dataTodo){
-				tes = tes + ("<div>" + (dataTodo[x]["data"]) 
-					+ "<button onclick = 'deleteData(this.name)' name = " 
-					+ dataTodo[x]["code"] + " >Del</button><button>Y</button></div>");
+				tes = tes + ("<div class = 'flex-row'><div class = 'outputContainer'>" + (dataTodo[x]["data"]) 
+					+ "</div><div class = 'buttonInput'><button onclick = 'deleteData(this.name)' name = " 
+					+ dataTodo[x]["code"] + " >Del</button><button>Y</button></div></div>");
 
 			}
 			document.getElementById('modal-result').innerHTML = tes;
