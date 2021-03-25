@@ -3,17 +3,50 @@
 	<head>
 		<meta charset = "UTF-8" />
 	</head>
-	<body>
-		<div>
-			<h1>To Do List</h1>
-			
-				<input type = "text" id = "input-1" name = "item" value = "Name" /><button onclick = "addItem()" >add item</button>
-			
-		</div>
-		<div id = "modal-result">
-				
-		</div>
+	<style>
+		*{
+			box-sizing:border-box;
+			margin:0;
+			border:0;
+		}
 
+		.title{
+			width:100%;
+			text-align:center;
+			margin-top:40px;
+		}
+
+		.formInput{
+			width:100%;
+			text-align:center;
+			margin-top:30px; 
+		}
+
+		.mainContainer{
+			margin:0 20% 0 20%;
+			border:1px solid black;
+		}
+
+		.inputContainer{
+			border:1px solid black;
+			font-size:15px;
+			height:30px;
+			width:68%;
+		}
+
+	</style>
+	<body>
+		<div class = "mainContainer">
+			<div>
+			<h1 class = "title">To Do List</h1>
+			<div class = "formInput">
+				<input type = "text" class = "inputContainer" id = "input-1" name = "item" value = "Name" /><button onclick = "addItem()" >add item</button>
+			</div>
+			</div>
+			<div id = "modal-result">
+				
+			</div>
+		</div>
 
 	</body>
 	<script>
@@ -62,7 +95,7 @@
 			delete dataTodo[idData];
 			displayData();
 		}
-	
+		//i think this is alreadey done, but if you want, u can put update function so it can update json file to for edit data purposes and change isDone status
 		displayData();
 	</script>
 </html>
