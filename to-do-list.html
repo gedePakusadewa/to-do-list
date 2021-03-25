@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<meta charset = "UTF-8" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<style>
 		*{
@@ -53,6 +55,10 @@
 			flex-direction:row;
 		}
 
+		.innerButton{
+			background-color:white;
+		}
+
 	</style>
 	<body>
 		<div class = "mainContainer">
@@ -101,15 +107,36 @@
 			var tes = "";
 			
 			for(x in dataTodo){
-				tes = tes + ("<div class = 'flex-row'><div class = 'outputContainer'>" + (dataTodo[x]["data"]) 
-					+ "</div><div class = 'buttonInput'><button onclick = 'deleteData(this.name)' name = " 
-					+ dataTodo[x]["code"] + " >Del</button><button>Y</button></div></div>");
+				tes = tes + 
+				("<div class = 'flex-row'>"
+					+ "<div class = 'outputContainer'>" 
+						+ (dataTodo[x]["data"])
+					+ "</div>"
+					+ "<div class = 'buttonInput'>"
+						+"<button class = 'innerButton' onclick = 'deleteData(this.name)' name = " + dataTodo[x]["code"] 
+						+ " >"
+							+"<i class='fa fa-close'></i>"
+						+"</button>"
+						+"<button class = 'innerButton'>" +isDoneIcon(dataTodo[x]['code'])+ 
+						+"</button>"
+					+"</div>"
+				+"</div>");
 
 			}
 			document.getElementById('modal-result').innerHTML = tes;
-						
+			lanjut bagianne, cobak benerin function isDoneIcon pank ngidang merepson icon yg sesaui dengan status isDone json
+			suud to pikirn engken carane ngai fungsi update untuk json	
 		}
 		
+		function isDoneIcon(isData){
+			if(dataTodo[idData]['isDone'] === false){
+				return "<i class='material-icons'>check_box_outline_blank</i>";
+			}else{
+				return "<i class='material-icons'>check_box</i>";
+			}
+
+		}
+
 		function deleteData(idData){
 			console.log((idData));
 			delete dataTodo[idData];
