@@ -59,6 +59,10 @@
 			background-color:white;
 		}
 
+		#modal-update{
+			display:none;
+		}
+
 	</style>
 	<body>
 		<div class = "mainContainer">
@@ -70,6 +74,9 @@
 			</div>
 			</div>
 			<div id = "modal-result" class = "">
+				
+			</div>
+			<div id = "modal-update">
 				
 			</div>
 		</div>
@@ -113,8 +120,9 @@
 						+ (dataTodo[x]["data"])
 					+ "</div>"
 					+ "<div class = 'buttonInput'>"
-						+"<button class = 'innerButton' onclick = 'toggleData(this.name)' name = " + dataTodo[x]["code"] + "<span id = '"+ dataTodo[x]["code"] +"'>" +isDoneIcon(dataTodo[x]['code'])+"</span>" 
+						+"<button class = 'innerButton' onclick = 'toggleData(this.name)' name = " + dataTodo[x]["code"] + "><span id = '"+ dataTodo[x]["code"] +"'>" +isDoneIcon(dataTodo[x]['code'])+"</span>" 
 						+"</button>"
+						+"<button class = 'innerButton'><i class='fa fa-edit'></i></button>"
 						+"<button class = 'innerButton' onclick = 'deleteData(this.name)' name = " + dataTodo[x]["code"] + " >"
 							+"<i class='fa fa-close'></i>"
 						+"</button>"
@@ -123,8 +131,6 @@
 
 			}
 			document.getElementById('modal-result').innerHTML = tes;
-			// lanjut bagianne, cobak benerin function isDoneIcon pank ngidang merepson icon yg sesaui dengan status isDone json
-			// suud to pikirn engken carane ngai fungsi update untuk json	
 		}
 		
 		function isDoneIcon(idData){
@@ -137,12 +143,12 @@
 		}
 
 		function toggleData(idData){
-			if(dataTodo[isData]['isDone'] === false){
+			if(dataTodo[idData]['isDone'] === false){
 				document.getElementById(idData).innerHTML = "<i class='material-icons'>check_box</i>";
-				dataTodo[isData]['isDone'] = true;
+				dataTodo[idData]['isDone'] = true;
 			}else{
 				document.getElementById(idData).innerHTML = "<i class='material-icons'>check_box_outline_blank</i>";
-				dataTodo[isData]['isDone'] = false;
+				dataTodo[idData]['isDone'] = false;
 			}
 		}	
 
@@ -151,7 +157,11 @@
 			delete dataTodo[idData];
 			displayData();
 		}
-		//i think this is alreadey done, but if you want, u can put update function so it can update json file to for edit data purposes and change isDone status
+
+		function displayUpdate(idData){
+			lanjut fungsi update ne
+		}
+
 		displayData();
 	</script>
 </html>
