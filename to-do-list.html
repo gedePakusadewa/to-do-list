@@ -76,14 +76,14 @@
 
 	</body>
 	<script>
-		/*
+		
 		var dataTodo = { 
 			do0:{
 				data:"Do this now", isDone : false, code : "do0" 
 			},
 
 			do1:{
-				data:"DO that tommorow", isDone : false, code : "do1"
+				data:"DO that tommorow", isDone : true, code : "do1"
 			},
 
 			do2:{
@@ -91,8 +91,8 @@
 			}
 
 		};
-		*/
-		var dataTodo = new Array();
+		
+		//var dataTodo = new Array();
 		var incre = 0;
 		
 		function addItem(){
@@ -113,22 +113,21 @@
 						+ (dataTodo[x]["data"])
 					+ "</div>"
 					+ "<div class = 'buttonInput'>"
-						+"<button class = 'innerButton' onclick = 'deleteData(this.name)' name = " + dataTodo[x]["code"] 
-						+ " >"
-							+"<i class='fa fa-close'></i>"
+						+"<button class = 'innerButton' onclick = 'toggleData(this.name)' name = " + dataTodo[x]["code"] + "<span id = '"+ dataTodo[x]["code"] +"'>" +isDoneIcon(dataTodo[x]['code'])+"</span>" 
 						+"</button>"
-						+"<button class = 'innerButton'>" +isDoneIcon(dataTodo[x]['code'])+ 
+						+"<button class = 'innerButton' onclick = 'deleteData(this.name)' name = " + dataTodo[x]["code"] + " >"
+							+"<i class='fa fa-close'></i>"
 						+"</button>"
 					+"</div>"
 				+"</div>");
 
 			}
 			document.getElementById('modal-result').innerHTML = tes;
-			lanjut bagianne, cobak benerin function isDoneIcon pank ngidang merepson icon yg sesaui dengan status isDone json
-			suud to pikirn engken carane ngai fungsi update untuk json	
+			// lanjut bagianne, cobak benerin function isDoneIcon pank ngidang merepson icon yg sesaui dengan status isDone json
+			// suud to pikirn engken carane ngai fungsi update untuk json	
 		}
 		
-		function isDoneIcon(isData){
+		function isDoneIcon(idData){
 			if(dataTodo[idData]['isDone'] === false){
 				return "<i class='material-icons'>check_box_outline_blank</i>";
 			}else{
@@ -136,6 +135,16 @@
 			}
 
 		}
+
+		function toggleData(idData){
+			if(dataTodo[isData]['isDone'] === false){
+				document.getElementById(idData).innerHTML = "<i class='material-icons'>check_box</i>";
+				dataTodo[isData]['isDone'] = true;
+			}else{
+				document.getElementById(idData).innerHTML = "<i class='material-icons'>check_box_outline_blank</i>";
+				dataTodo[isData]['isDone'] = false;
+			}
+		}	
 
 		function deleteData(idData){
 			console.log((idData));
