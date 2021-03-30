@@ -81,6 +81,7 @@
 					name = "itemUpdate" value = "Insert Update Here"/><br />
 				<button class = "buttonInput" onclick = "saveUpdateData()" >add item</button>
 			</div>
+			<div style = "text-align:center;margin-top:30px;"><button onclick = "resetAll()">Clear Items</button></div>
 		</div>
 
 	</body>
@@ -170,6 +171,11 @@
 		function saveUpdateData(){
 			dataTodo[document.getElementById("codeUpdate").value]["data"] = document.getElementById("updateData").value;
 			document.getElementById("modal-update").style.display = "none";
+			displayData();
+		}
+		
+		function resetAll(){
+			dataTodo = [];
 			displayData();
 		}
 

@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<meta charset = "UTF-8" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<style>
 		*{
@@ -24,7 +26,6 @@
 
 		.mainContainer{
 			margin:0 25% 0 25%;
-			border:1px solid black;
 		}
 
 		.inputContainer{
@@ -53,6 +54,14 @@
 			flex-direction:row;
 		}
 
+		.innerButton{
+			background-color:white;
+		}
+
+		#modal-update{
+			display:none;
+		}
+
 	</style>
 	<body>
 		<div class = "mainContainer">
@@ -66,18 +75,25 @@
 			<div id = "modal-result" class = "">
 				
 			</div>
+			<div id = "modal-update">
+				<input id = "codeUpdate" type = text value = "" /><br >
+				<input id = "updateData" type = "text" class = "inputContainer" id = "input-2" 
+					name = "itemUpdate" value = "Insert Update Here"/><br />
+				<button class = "buttonInput" onclick = "saveUpdateData()" >add item</button>
+			</div>
+			<div style = "text-align:center;margin-top:30px;"><button onclick = "resetAll()">Clear Items</button></div>
 		</div>
 
 	</body>
 	<script>
-		/*
+		
 		var dataTodo = { 
 			do0:{
 				data:"Do this now", isDone : false, code : "do0" 
 			},
 
 			do1:{
-				data:"DO that tommorow", isDone : false, code : "do1"
+				data:"DO that tommorow", isDone : true, code : "do1"
 			},
 
 			do2:{
@@ -85,8 +101,8 @@
 			}
 
 		};
-		*/
-		var dataTodo = new Array();
+		
+		//var dataTodo = new Array();
 		var incre = 0;
 		
 		function addItem(){
@@ -101,21 +117,67 @@
 			var tes = "";
 			
 			for(x in dataTodo){
-				tes = tes + ("<div class = 'flex-row'><div class = 'outputContainer'>" + (dataTodo[x]["data"]) 
-					+ "</div><div class = 'buttonInput'><button onclick = 'deleteData(this.name)' name = " 
-					+ dataTodo[x]["code"] + " >Del</button><button>Y</button></div></div>");
+				tes = tes + 
+				("<div class = 'flex-row'>"
+					+ "<div class = 'outputContainer'>" 
+						+ (dataTodo[x]["data"])
+					+ "</div>"
+					+ "<div class = 'buttonInput'>"
+						+"<button class = 'innerButton' onclick = 'toggleData(this.name)' name = " + dataTodo[x]["code"] + "><span id = '"+ dataTodo[x]["code"] +"'>" +isDoneIcon(dataTodo[x]['code'])+"</span>" 
+						+"</button>"
+						+"<button class = 'innerButton' onclick = 'toggleDisplayUpdateForm(this.name)' name = " + dataTodo[x]["code"] + " ><i class='fa fa-edit'></i></button>"
+						+"<button class = 'innerButton' onclick = 'deleteData(this.name)' name = " + dataTodo[x]["code"] + " >"
+							+"<i class='fa fa-close'></i>"
+						+"</button>"
+					+"</div>"
+				+"</div>");
 
 			}
 			document.getElementById('modal-result').innerHTML = tes;
-						
 		}
 		
+		function isDoneIcon(idData){
+			if(dataTodo[idData]['isDone'] === false){
+				return "<i class='material-icons'>check_box_outline_blank</i>";
+			}else{
+				return "<i class='material-icons'>check_box</i>";
+			}
+
+		}
+
+		function toggleData(idData){
+			if(dataTodo[idData]['isDone'] === false){
+				document.getElementById(idData).innerHTML = "<i class='material-icons'>check_box</i>";
+				dataTodo[idData]['isDone'] = true;
+			}else{
+				document.getElementById(idData).innerHTML = "<i class='material-icons'>check_box_outline_blank</i>";
+				dataTodo[idData]['isDone'] = false;
+			}
+		}	
+
 		function deleteData(idData){
 			console.log((idData));
 			delete dataTodo[idData];
 			displayData();
 		}
-		//i think this is alreadey done, but if you want, u can put update function so it can update json file to for edit data purposes and change isDone status
+
+		function toggleDisplayUpdateForm(code){
+
+			document.getElementById("modal-update").style.display = "block";
+			document.getElementById("codeUpdate").value = code;
+		
+		}
+
+		function saveUpdateData(){
+			dataTodo[document.getElementById("codeUpdate").value]["data"] = document.getElementById("updateData").value;
+			document.getElementById("modal-update").style.display = "none";
+			displayData();
+		}
+		
+		function resetAll(){
+			
+		}
+
 		displayData();
 	</script>
 </html>
